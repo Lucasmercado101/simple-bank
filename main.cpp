@@ -12,12 +12,22 @@ string getStr(string name)
     getline(cin, accName);
     return accName;
 }
+
+string getStr()
+{
+    string accName;
+    cout << ">";
+    getline(cin, accName);
+    return accName;
+}
+
 typedef struct userAccount
 {
     int id;
     string name;
     int money;
 } userAccount;
+
 class UsersArr
 {
 public:
@@ -46,6 +56,7 @@ public:
         length++;
     }
 };
+
 int main()
 {
     UsersArr users(5);
@@ -75,14 +86,35 @@ int main()
 
             for (int i = 0; i < users.length; i++)
             {
-                string name = users.accounts[i].name;
-                if (name.compare(accName) == 0)
+                userAccount account = users.accounts[i];
+                if (account.name.compare(accName) == 0)
                 {
-                    cout << "Found!" << endl;
+                    for (;;)
+                    {
+                        cout << account.name << " | "
+                             << "$" << account.money << endl;
+
+                        cout << "0 - return | 1 add money" << endl;
+
+                        string cmd = getStr();
+
+                        if (cmd.compare("0") == 0)
+                            break;
+
+                        if (cmd.compare("1") == 0)
+                        {
+                            string amountToAdd = getStr("Enter amount to add");
+
+                            int num = stoi(amountToAdd);
+
+                            if (num > 0)
+                            {
+                                account.money = num;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-    cout << "not found" << endl;
-    return 0;
 }
