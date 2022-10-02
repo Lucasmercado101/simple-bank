@@ -108,9 +108,9 @@ int main()
                             int num = stoi(amountToAdd);
 
                             if (num > 0)
-                            {
                                 account.money += num;
-                            }
+                            else
+                                cout << "Amount must be positive!" << endl;
                         }
 
                         if (cmd.compare("2") == 0)
@@ -120,9 +120,9 @@ int main()
                             int num = stoi(amountToSub);
 
                             if (num > 0)
-                            {
                                 account.money -= num;
-                            }
+                            else
+                                cout << "Amount must be positive!" << endl;
                         }
                     }
                 }
