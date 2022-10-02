@@ -14,6 +14,7 @@ string getStr(string name)
 }
 typedef struct userAccount
 {
+    int id;
     string name;
     int money;
 } userAccount;
@@ -64,7 +65,8 @@ int main()
             cout << "account name" << endl
                  << ">";
             getline(cin, accName);
-            users.push({accName, 1});
+
+            users.push({users.length + 1, accName, 0});
         }
 
         if (command.compare("1") == 0)
