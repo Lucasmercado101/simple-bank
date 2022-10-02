@@ -94,7 +94,7 @@ int main()
                         cout << account.name << " | "
                              << "$" << account.money << endl;
 
-                        cout << "0 - return | 1 add money" << endl;
+                        cout << "0 - return | 1 - add money | 2 - subtract amount" << endl;
 
                         string cmd = getStr();
 
@@ -109,7 +109,19 @@ int main()
 
                             if (num > 0)
                             {
-                                account.money = num;
+                                account.money += num;
+                            }
+                        }
+
+                        if (cmd.compare("2") == 0)
+                        {
+                            string amountToSub = getStr("Enter amount to add");
+
+                            int num = stoi(amountToSub);
+
+                            if (num > 0)
+                            {
+                                account.money -= num;
                             }
                         }
                     }
